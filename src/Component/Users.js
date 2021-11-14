@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 
   export class Users extends Component {
 
-    
   handleClose = () =>{
     this.props.GetShow(false);
   }
@@ -35,8 +34,7 @@ import {connect} from 'react-redux'
     this.requestData();
  }
 
- 
-  saveUser = async (e) => {
+   saveUser = async (e) => {
     const {name,email,phone}=this.props
     let data={name,email,phone};
     console.log(data);
