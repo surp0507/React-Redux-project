@@ -6,56 +6,44 @@ import { Get_UserId } from './usersType'
 import { Get_Show } from './usersType'
 
 export const GetUser = (payload) => {
-    
-    
-    return {
-        type: Get_User,
-        payload
+  return {
+    type: Get_User,
+    payload
     }
 }
 
 export const GetName = (payload) => {
-    
-    
-    return {
-        type: Get_Name,
-        payload
+  return {
+    type: Get_Name,
+    payload
     }
 }
 
 export const GetEmail = (payload) => {
-    
-    
-    return {
-        type: Get_Email,
-        payload
+  return {
+    type: Get_Email,
+    payload
     }
 }
 
 export const GetPhone = (payload) => {
-    
-    
-    return {
-        type: Get_Phone,
-        payload
+  return {
+    type: Get_Phone,
+    payload
     }
 }
 
 export const GetUserId = (payload) => {
-    
-    
-    return {
-        type: Get_UserId,
-        payload
+  return {
+    type: Get_UserId,
+    payload
     }
 }
 
 export const GetShow = (payload) => {
-    
-    
-    return {
-        type: Get_Show,
-        payload
+  return {
+    type: Get_Show,
+    payload
     }
 }
 

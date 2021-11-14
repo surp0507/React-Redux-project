@@ -18,8 +18,6 @@ const initialState = {
     posts:[],
     comments:[],
     show:false
-    
-  
 }
 
 const userReducer = (state = initialState, action) => {
@@ -67,9 +65,6 @@ const userReducer = (state = initialState, action) => {
             ...state,
             show :action.payload
         }
-
-
-
         default: return state;
     }
     
