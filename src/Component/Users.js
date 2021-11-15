@@ -6,8 +6,7 @@ import { GetUser,GetName,GetEmail,GetPhone,GetUserId,GetShow } from '../redux';
 import {connect} from 'react-redux'
 
   export class Users extends Component {
-
-  handleClose = () =>{
+   handleClose = () =>{
     this.props.GetShow(false);
   }
 

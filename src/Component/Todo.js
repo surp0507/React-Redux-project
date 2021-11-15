@@ -5,24 +5,23 @@ import { connect } from 'react-redux';
 import { GetTodo } from '../redux';
 
   export class Todo extends Component {
-  
- requestData = async ()=> {
-    const {user_id}=this.props.match.params
-    console.log(user_id);
-    const response= await axios.get(`http://localhost:3004/users/${user_id}/todos`);
-    this.props.GetTodo(response.data);
-    console.log(this.props.todos)
-  }
+    requestData = async ()=> {
+      const {user_id}=this.props.match.params
+      console.log(user_id);
+      const response= await axios.get(`http://localhost:3004/users/${user_id}/todos`);
+      this.props.GetTodo(response.data);
+      console.log(this.props.todos)
+    }
                         
-  componentDidMount() {
-  this.requestData();
-  }
+    componentDidMount() {
+      this.requestData();
+    }
   
-  render() {
-    if(!this.props.todos) return "Loading..."
-    return (
-      <div>
-        <h2 className="text-center" >Todo Details</h2>
+    render() {
+      if(!this.props.todos) return "Loading..."
+      return (
+        <div>
+          <h2 className="text-center" >Todo Details</h2>
           <Table >
             <tr>
               <td>UserId</td>

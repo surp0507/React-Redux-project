@@ -4,7 +4,6 @@ import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { GetComments } from '../redux';
 export class Comments extends Component {
-  
   requestData = async () => {
     const {com_id}=this.props.match.params
     console.log(com_id)
