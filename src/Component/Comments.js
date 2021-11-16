@@ -3,11 +3,12 @@ import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { GetComments } from '../redux';
+
 export class Comments extends Component {
   requestData = async () => {
-    const {com_id}=this.props.match.params
-    console.log(com_id)
-    const response= await axios.get(`http://localhost:3004/posts/${com_id}/comments`);
+    const {comid}=this.props.match.params
+    console.log(comid)
+    const response= await axios.get(`http://localhost:3004/posts/${comid}/comments`);
     this.props.GetComments(response.data)
     console.log(this.props.comments)
   }

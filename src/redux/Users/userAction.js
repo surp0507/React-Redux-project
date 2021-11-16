@@ -4,6 +4,7 @@ import { Get_Email } from './usersType'
 import { Get_Phone } from './usersType'
 import { Get_UserId } from './usersType'
 import { Get_Show } from './usersType'
+import { Get_ItemId } from './usersType'
 
 export const GetUser = (payload) => {
   return {
@@ -43,6 +44,13 @@ export const GetUserId = (payload) => {
 export const GetShow = (payload) => {
   return {
     type: Get_Show,
+    payload
+    }
+}
+
+export const GetItem = (payload) => {
+  return {
+    type: Get_ItemId,
     payload
     }
 }

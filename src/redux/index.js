@@ -7,5 +7,6 @@ export { GetTodo } from './Todos/todoAction'
 export {GetPosts} from './posts/postsAction'
 export {GetComments} from './comment/commentAction'
 export {GetShow} from './Users/userAction'
+export {GetItem} from './Users/userAction'
 
 

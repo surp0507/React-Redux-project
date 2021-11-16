@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 
   export class Posts extends Component {
     requestData = async ()=>{
-      const {post_id}=this.props.match.params;
-      const response= await axios.get(`http://localhost:3004/users/${post_id}/posts`);
+      const {postid}=this.props.match.params;
+      const response= await axios.get(`http://localhost:3004/users/${postid}/posts`);
       this.props.GetPosts(response.data)
       console.log(this.props.posts)
     }

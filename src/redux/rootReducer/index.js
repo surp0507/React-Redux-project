@@ -7,6 +7,7 @@ import { Get_Todo } from '../Todos/todoType'
 import { Get_Posts } from '../posts/postsType'
 import { Get_Comment } from '../comment/commentType'
 import { Get_Show } from '../Users/usersType'
+import { Get_ItemId } from '../Users/usersType'
 
 const initialState = {
     newUser: [],
@@ -17,7 +18,8 @@ const initialState = {
     todos:[],
     posts:[],
     comments:[],
-    show:false
+    show:false,
+    Itemid:""
 }
 
 const userReducer = (state = initialState, action) => {
@@ -65,6 +67,12 @@ const userReducer = (state = initialState, action) => {
             ...state,
             show :action.payload
         }
+        case Get_ItemId: return {
+            ...state,
+            Itemid :action.payload
+        }
+
+
         default: return state;
     }
     

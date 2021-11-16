@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Button,Modal,Table} from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { GetUser,GetName,GetEmail,GetPhone,GetUserId,GetShow } from '../redux';
+import { GetUser,GetName,GetEmail,GetPhone,GetUserId,GetShow,GetItem } from '../redux';
 import {connect} from 'react-redux'
 
-  export class Users extends Component {
+  export class Users extends Component {    
+   
    handleClose = () =>{
     this.props.GetShow(false);
   }
@@ -15,25 +16,21 @@ import {connect} from 'react-redux'
   }
 
   requestData = async () => {
-    const { newUser,name,email,phone,userId } = this.props
     const response = await axios.get('http://localhost:3004/users');
     this.props.GetUser(response.data)
     this.props.GetName(response.data[0].name)
     this.props.GetEmail(response.data[0].email)
     this.props.GetPhone(response.data[0].phone)
     this.props.GetUserId(response.data[0].id)
-    console.log(newUser)
-    console.log(name);
-    console.log(email);
-    console.log(phone);
-    console.log(userId);
  }
  
   componentDidMount() {
     this.requestData();
+   
  }
 
    saveUser = async (e) => {
+    e.preventDefault();
     const {name,email,phone}=this.props
     let data={name,email,phone};
     console.log(data);
@@ -43,6 +40,7 @@ import {connect} from 'react-redux'
   }
 
   selectUser = (Id) => {
+    this.props.GetShow(true)
     const {newUser}=this.props
     console.log(newUser[Id-1])
     const item=newUser[Id-1]
@@ -50,8 +48,11 @@ import {connect} from 'react-redux'
     this.props.GetEmail(item.email);
     this.props.GetPhone(item.phone);
     this.props.GetUserId(item.id);
+    this.props.GetItem(item.id)
+    console.log(this.props.Itemid)
+   
   }
-
+  
   UpdateUser = async () => {
     const {name,email,phone,userId}=this.props
     let item = { name, email, phone }
@@ -62,8 +63,9 @@ import {connect} from 'react-redux'
   }
 
   render() {
+    let {Itemid}=this.props
     if(!this.props.newUser) return "Loading..."
-    const {name,email,phone}=this.props
+    const {name,email,phone,newUser}=this.props
     return (    
       <div>
         <h2 className="text-center" variant="success">User Details</h2>
@@ -77,7 +79,7 @@ import {connect} from 'react-redux'
               <td>UserEmail</td>
               <td>UserPhone</td>
             </tr>
-             { this.props.newUser.map((user) => (
+             {newUser.map((user) => (
              <tr>
                <td>{user.id}</td>
                <td>{user.name}</td>
@@ -109,17 +111,20 @@ import {connect} from 'react-redux'
                    <Modal.Body>
                      <input  
                        autoComplete="none"
+                       value={name}
                        type="text" 
                        onChange={(e)=>this.props.GetName(e.target.value)}
                        name="name" placeholder="name"
                      /> <br/> <br />
                      <input 
+                     value={email}
                        autoComplete="none"
                        type="text" 
                        onChange={(e)=>this.props.GetEmail(e.target.value)} 
                        name="email" placeholder="email" 
                      /> <br/> <br />
                      <input 
+                     value={phone}
                        autoComplete="none"
                        type="text" 
                       onChange={(e)=>this.props.GetPhone(e.target.value)} 
@@ -130,45 +135,36 @@ import {connect} from 'react-redux'
                          <Button variant="secondary" onClick={this.handleClose}>
                            Close
                          </Button>
-                         <Button variant="success" onClick={this.saveUser}>
-                          Save changes
-                         </Button>
+
+                         {  Itemid>0?
+                          <Button variant="success" className="btn btn-sm" 
+                            onClick={this.UpdateUser}>update</Button>
+         
+                                       :
+                          <Button variant="success" onClick={this.saveUser}>
+                             Save changes
+                          </Button>
+                      
+                          }
                        </Modal.Footer>
                   </Modal>
                     <br/>
-                   <div className="mx-5">
-                     <input 
-                       type="text" 
-                       value={name}
-                       onChange={(e)=>this.props.GetName(e.target.value)} 
-                       name="name" 
-                     /> <br/><br />
-                     <input 
-                       type="text" 
-                       value={email}onChange={(e)=>this.props.GetEmail(e.target.value)} 
-                       name="email" 
-                     /> <br/><br />
-                     <input 
-                       type="text" 
-                       value={phone}
-                       onChange={(e)=>this.props.GetPhone(e.target.value)}
-                       name="phone" 
-                     /> <br /> <br/>
-                     <Button variant="success" className="btn btn-sm" onClick={this.UpdateUser}>update</Button>
-                  </div>
                </div>
            )
+          
+
       }
 }
        
 const mapStatetoProps = (state) => {
   return {
-    newUser: state.newUser,
-    name: state.name,
-    email: state.email,
-    phone: state.phone,
-    userId:state.userId,
-    show:state.show
+    newUser: state.userReducer.newUser,
+    name: state.userReducer.name,
+    email: state.userReducer.email,
+    phone: state.userReducer.phone,
+    userId:state.userReducer.userId,
+    show:state.userReducer.show,
+    Itemid:state.userReducer.Itemid
     }
   }
 
@@ -178,6 +174,7 @@ const mapDispatchtoProps = {
   GetEmail,
   GetPhone,
   GetUserId,
-  GetShow
+  GetShow,
+  GetItem
 }
 export default connect(mapStatetoProps,mapDispatchtoProps)(Users) ;

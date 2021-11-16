@@ -6,9 +6,9 @@ import { GetTodo } from '../redux';
 
   export class Todo extends Component {
     requestData = async ()=> {
-      const {user_id}=this.props.match.params
-      console.log(user_id);
-      const response= await axios.get(`http://localhost:3004/users/${user_id}/todos`);
+      const {userid}=this.props.match.params
+      console.log(userid);
+      const response= await axios.get(`http://localhost:3004/users/${userid}/todos`);
       this.props.GetTodo(response.data);
       console.log(this.props.todos)
     }
