@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import {Button,Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { GetPosts } from '../redux';
+import { fetchPosts } from '../redux/thunk/Posts';
 import { connect } from 'react-redux';
 
   export class Posts extends Component {
-    requestData = async ()=>{
-      const {postid}=this.props.match.params;
-      const response= await axios.get(`http://localhost:3004/users/${postid}/posts`);
-      this.props.GetPosts(response.data)
-      console.log(this.props.posts)
-    }
+   
   
     componentDidMount() {
-      this.requestData();
+      const {postid}=this.props.match.params
+      const id=postid
+     this.props.fetchPosts(id)
     }
 
     render() {
@@ -49,12 +45,12 @@ import { connect } from 'react-redux';
 
  const mapStatetoProps =(state)=>{
   return{
-    posts:state.posts
+    posts:state.postsReducer.posts
   }
 }
 
 const mapDispatchtoProps = {
-  GetPosts
+  fetchPosts
 
 }
 

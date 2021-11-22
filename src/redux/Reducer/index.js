@@ -1,7 +1,13 @@
 import {combineReducers} from 'redux'
-import userReducer from '../rootReducer'
+import userReducer from './userReducder';
+import todoReducer from '../rootReducer/todoReducer';
+import postsReducer from '../rootReducer/postsReducer';
+import commentsReducer from '../rootReducer/commetReducer';
 const  reducer=combineReducers({
-    userReducer
+    userReducer,
+    todoReducer,
+    postsReducer,
+    commentsReducer
 
 })
 

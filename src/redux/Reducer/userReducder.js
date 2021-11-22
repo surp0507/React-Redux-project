@@ -3,11 +3,9 @@ import { Get_Name } from '../Users/usersType'
 import { Get_Email } from '../Users/usersType'
 import { Get_Phone } from '../Users/usersType'
 import { Get_UserId } from '../Users/usersType'
-import { Get_Todo } from '../Todos/todoType'
-import { Get_Posts } from '../posts/postsType'
-import { Get_Comment } from '../comment/commentType'
 import { Get_Show } from '../Users/usersType'
 import { Get_ItemId } from '../Users/usersType'
+import { SET_DATA } from '../Users/usersType'
 
 const initialState = {
     newUser: [],
@@ -15,11 +13,9 @@ const initialState = {
     email: {},
     phone: {},
     userId:{},
-    todos:[],
-    posts:[],
-    comments:[],
     show:false,
-    Itemid:""
+    Itemid:"",
+    data:[]
 }
 
 const userReducer = (state = initialState, action) => {
@@ -48,21 +44,6 @@ const userReducer = (state = initialState, action) => {
             userId:action.payload
         }
 
-        case Get_Todo: return {
-            ...state,
-            todos:action.payload
-        }
-
-        case Get_Posts: return {
-            ...state,
-            posts:action.payload
-        }
-
-        case Get_Comment: return {
-            ...state,
-            comments :action.payload
-        }
-
         case Get_Show: return {
             ...state,
             show :action.payload
@@ -71,6 +52,12 @@ const userReducer = (state = initialState, action) => {
             ...state,
             Itemid :action.payload
         }
+
+        case SET_DATA: return {
+            ...state,
+            data :action.payload
+        }
+
 
 
         default: return state;

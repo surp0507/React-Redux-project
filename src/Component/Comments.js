@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { GetComments } from '../redux';
+import { fetchComments } from '../redux/thunk/Comments';
+
 
 export class Comments extends Component {
-  requestData = async () => {
-    const {comid}=this.props.match.params
-    console.log(comid)
-    const response= await axios.get(`http://localhost:3004/posts/${comid}/comments`);
-    this.props.GetComments(response.data)
-    console.log(this.props.comments)
-  }
-  
+
   componentDidMount() {
-    this.requestData();
+    const {comid}=this.props.match.params
+    const id=comid
+    this.props.fetchComments(id)
   }
     
  render() {
@@ -43,13 +38,12 @@ export class Comments extends Component {
 
 const mapStatetoProps =(state)=>{
   return{
-    comments:state.comments
+    comments:state.commentsReducer.comments
   }
 }
 
 const mapDispatchtoProps = {
-  GetComments
-
+fetchComments
 }
 
 export default connect(mapStatetoProps,mapDispatchtoProps)(Comments) ;

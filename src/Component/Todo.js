@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { GetTodo } from '../redux';
+import { fetchTodo } from '../redux/thunk/Todo';
+
 
   export class Todo extends Component {
-    requestData = async ()=> {
-      const {userid}=this.props.match.params
-      console.log(userid);
-      const response= await axios.get(`http://localhost:3004/users/${userid}/todos`);
-      this.props.GetTodo(response.data);
-      console.log(this.props.todos)
-    }
-                        
+                  
     componentDidMount() {
-      this.requestData();
+      const {userid}=this.props.match.params
+      const uid=userid
+      console.log(uid)
+      this.props.fetchTodo(uid)
     }
   
     render() {
@@ -43,12 +39,12 @@ import { GetTodo } from '../redux';
 
  const mapStatetoProps =(state)=>{
    return{
-  todos:state.todos
+  todos:state.todoReducer.todos
    }
  }
 
  const mapDispatchtoProps = {
-   GetTodo,
+  fetchTodo 
 
 }
 

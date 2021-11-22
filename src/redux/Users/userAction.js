@@ -5,6 +5,19 @@ import { Get_Phone } from './usersType'
 import { Get_UserId } from './usersType'
 import { Get_Show } from './usersType'
 import { Get_ItemId } from './usersType'
+import { SET_DATA } from './usersType'
+
+
+
+export const setData=(payload)=>{
+  console.log(payload);
+  return{
+    type:SET_DATA,
+    payload
+  }
+
+
+}
 
 export const GetUser = (payload) => {
   return {
