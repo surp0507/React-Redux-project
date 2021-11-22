@@ -2,13 +2,8 @@
 import { setData } from "../Users/userAction";
 import axios from "axios";
 
-
-
-const addUsers = (data)=> async (dispatch) => {
- 
+ const addUsers = (data)=> async (dispatch) => {
     try {
- 
-       
       const response = await axios.get(`http://localhost:3004/users`,{...data});
       dispatch(setData(response.data));
       console.log(data)

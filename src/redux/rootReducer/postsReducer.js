@@ -1,7 +1,7 @@
 import {Get_Posts} from '../posts/postsType'
 
 const initialState={
-    posts:[]
+  posts:[]
 }
 
 const postsReducer=(state = initialState,action)=>{

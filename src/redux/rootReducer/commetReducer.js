@@ -1,7 +1,7 @@
 import {Get_Comment} from '../comment/commentType'
 
 const initialState={
-    comments:[],
+  comments:[],
 }
 
 const commentsReducer=(state = initialState,action)=>{

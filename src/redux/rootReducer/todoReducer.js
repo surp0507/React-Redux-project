@@ -1,7 +1,7 @@
 import {Get_Todo} from '../Todos/todoType'
 
 const initialState={
-    todos:[]
+  todos:[]
 }
 
 const todoReducer=(state = initialState,action)=>{

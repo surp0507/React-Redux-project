@@ -6,11 +6,10 @@ import { connect } from 'react-redux';
 
   export class Posts extends Component {
    
-  
-    componentDidMount() {
+     componentDidMount() {
       const {postid}=this.props.match.params
       const id=postid
-     this.props.fetchPosts(id)
+      this.props.fetchPosts(id)
     }
 
     render() {

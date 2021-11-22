@@ -50,7 +50,7 @@ import addUsers from '../redux/thunk/Adduser';
   }
 
   render() {
-let {Itemid}=this.props
+    let {Itemid}=this.props
     if(!this.props.newUser) return "Loading..."
     const {name,email,phone,newUser}=this.props
   
@@ -124,12 +124,11 @@ let {Itemid}=this.props
                            Close
                          </Button>
 
-                         {  Itemid>0?
+                         {  Itemid > 0?
                           <Button variant="success" className="btn btn-sm" 
                             onClick={this.updateUser}>update</Button>
-         
-                                       :
-                          <Button variant="success" onClick={this.props.addUsers}>
+                                           :
+                           <Button variant="success" onClick={this.props.addUsers}>
                              Save changes
                           </Button>
                            }
@@ -138,10 +137,8 @@ let {Itemid}=this.props
                     <br/>
                </div>
            )
-          
-
       }
-}
+  }
        
 const mapStatetoProps = (state) => {
   return {
