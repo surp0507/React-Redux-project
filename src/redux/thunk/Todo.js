@@ -10,4 +10,4 @@ export const fetchTodo = (id)=> async (dispatch) => {
       // logs the error whatever error occured in try block
       console.log(err);
     }
-  }
+  } 
