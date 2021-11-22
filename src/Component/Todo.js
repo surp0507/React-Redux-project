@@ -5,7 +5,6 @@ import { fetchTodo } from '../redux/thunk/Todo';
 
 
   export class Todo extends Component {
-                  
     componentDidMount() {
       const {userid}=this.props.match.params
       const uid=userid
@@ -39,14 +38,13 @@ import { fetchTodo } from '../redux/thunk/Todo';
 
  const mapStatetoProps =(state)=>{
    return{
-  todos:state.todoReducer.todos
+     todos:state.todoReducer.todos
    }
  }
 
  const mapDispatchtoProps = {
-  fetchTodo 
-
-}
+   fetchTodo 
+  }
 
 export default connect(mapStatetoProps,mapDispatchtoProps)(Todo);
 

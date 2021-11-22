@@ -5,8 +5,7 @@ import { fetchPosts } from '../redux/thunk/Posts';
 import { connect } from 'react-redux';
 
   export class Posts extends Component {
-   
-     componentDidMount() {
+    componentDidMount() {
       const {postid}=this.props.match.params
       const id=postid
       this.props.fetchPosts(id)
@@ -43,14 +42,13 @@ import { connect } from 'react-redux';
  }
 
  const mapStatetoProps =(state)=>{
-  return{
-    posts:state.postsReducer.posts
-  }
-}
+   return{
+     posts:state.postsReducer.posts
+   }
+ }
 
 const mapDispatchtoProps = {
   fetchPosts
-
 }
 
 export default connect(mapStatetoProps,mapDispatchtoProps)(Posts) ;

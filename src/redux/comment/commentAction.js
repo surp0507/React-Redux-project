@@ -1,6 +1,6 @@
 import { Get_Comment } from "./commentType"
 
-export const GetComments= (payload) => {
+export const getComments= (payload) => {
   return {
     type:Get_Comment ,
     payload

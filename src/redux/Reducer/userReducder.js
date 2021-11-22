@@ -19,50 +19,46 @@ const initialState = {
 }
 
 const userReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case Get_User: return {
-            ...state,
-            newUser:action.payload
-        }
-        case Get_Name: return {
-            ...state,
-            name:action.payload
-        }
+  switch (action.type) {
+    case Get_User: return {
+      ...state,
+      newUser:action.payload
+     }
+    case Get_Name: return {
+      ...state,
+      name:action.payload
+     }
 
-        case Get_Email: return {
-            ...state,
-            email:action.payload
-        }
+    case Get_Email: return {
+      ...state,
+      email:action.payload
+     }
 
-        case Get_Phone: return {
-            ...state,
-            phone:action.payload
-        }
+    case Get_Phone: return {
+      ...state,
+      phone:action.payload
+     }
 
-        case Get_UserId: return {
-            ...state,
-            userId:action.payload
-        }
-
-        case Get_Show: return {
-            ...state,
-            show :action.payload
-        }
-        case Get_ItemId: return {
-            ...state,
-            Itemid :action.payload
-        }
-
-        case SET_DATA: return {
-            ...state,
-            data :action.payload
-        }
-
-
-
-        default: return state;
+    case Get_UserId: return {
+      ...state,
+      userId:action.payload
     }
-    
-}
+
+    case Get_Show: return {
+      ...state,
+      show :action.payload
+    }
+    case Get_ItemId: return {
+      ...state,
+      Itemid :action.payload
+    }
+
+    case SET_DATA: return {
+      ...state,
+      data :action.payload
+    }
+     default: return state;
+    }
+  }
 
 export default userReducer;

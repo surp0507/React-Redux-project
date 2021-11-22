@@ -1,6 +1,6 @@
 import { Get_Posts } from "./postsType";
 
-export const GetPosts= (payload) => {
+export const getPosts= (payload) => {
   return {
     type:Get_Posts ,
     payload

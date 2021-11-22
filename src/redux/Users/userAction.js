@@ -10,7 +10,6 @@ import { SET_DATA } from './usersType'
 
 
 export const setData=(payload)=>{
-  console.log(payload);
   return{
     type:SET_DATA,
     payload
@@ -19,49 +18,49 @@ export const setData=(payload)=>{
 
 }
 
-export const GetUser = (payload) => {
+export const getUser = (payload) => {
   return {
     type: Get_User,
     payload
     }
 }
 
-export const GetName = (payload) => {
+export const getName = (payload) => {
   return {
     type: Get_Name,
     payload
     }
 }
 
-export const GetEmail = (payload) => {
+export const getEmail = (payload) => {
   return {
     type: Get_Email,
     payload
     }
 }
 
-export const GetPhone = (payload) => {
+export const getPhone = (payload) => {
   return {
     type: Get_Phone,
     payload
     }
 }
 
-export const GetUserId = (payload) => {
+export const getUserId = (payload) => {
   return {
     type: Get_UserId,
     payload
     }
 }
 
-export const GetShow = (payload) => {
+export const getShow = (payload) => {
   return {
     type: Get_Show,
     payload
     }
 }
 
-export const GetItem = (payload) => {
+export const getItem = (payload) => {
   return {
     type: Get_ItemId,
     payload
